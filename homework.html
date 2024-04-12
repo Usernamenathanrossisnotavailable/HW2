@@ -24,19 +24,21 @@
 	</style>
 </head>
 <body>
-	<div>
-		Click the button repeatedly to change the box color:
-	</div>
+	<ul id="unordered"></ul>
 	
-	<button id="btn">Click me!</button>
-	<input type= "text" id="box">
+	<button id="cap">Caps</button>
+	<button id="red">Red</button>
+	<button id="swap">Swap</button>
 	
 	<script>
 	
 	let userEntries = []
+	var ul = document.getElementById('unordered');
 	for (let i = 0; i < 3; i++) {
 		let playerText = prompt('Please enter a word of your choice:');
 		userEntries[i] = playerText;
+		var li = document.createElement('li');
+      		li.appendChild(document.createTextNode(userEntries[i]);
 	}
 	for (let i = 0; i < userEntries.length; i++) {
 		let playerText = prompt(userEntries[i]);
