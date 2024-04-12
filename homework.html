@@ -36,7 +36,7 @@
 	let userEntries = []
 	for (let i = 0; i < 3; i++) {
 		let playerText = prompt('Please enter a word of your choice:');
-		userEntries[playerText]
+		userEntries[i] = playerText;
 	}
 	for (let i = 0; i < userEntries.length; i++) {
 		let playerText = prompt(userEntries[i]);
