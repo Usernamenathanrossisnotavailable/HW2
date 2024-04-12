@@ -26,39 +26,59 @@
 <body>
 	<ul id="unordered"></ul>
 	
-	<button id="cap">Caps</button>
-	<button id="red">Red</button>
-	<button id="swap">Swap</button>
+	<button onclick="capify()">Caps</button>
+	<button onclick="(function() 
+	{
+		let lis = document.getElementById('unordered').childNodes;
+    		for(let i=0;i < lis.length; i++) {
+        		lis[i].style.color = 'red';
+    		}
+	}
+	)()";>Red</button>
+	<button id = "swap">Swap</button>
 	
 	<script>
 	
-	let userEntries = []
+	var userEntries = []
+	var listItems = []
 	var ul = document.getElementById('unordered');
 	for (let i = 0; i < 3; i++) {
 		let playerText = prompt('Please enter a word of your choice:');
 		userEntries[i] = playerText;
-		var li = document.createElement('li');
-      		li.appendChild(document.createTextNode(userEntries[i]));
 	}
-	for (let i = 0; i < userEntries.length; i++) {
-		let playerText = prompt(userEntries[i]);
+	listItems = userEntries;
+	function refreshUL(){
+		let RED = false;
+		if (ul.firstChild) {
+			if (ul.firstChild.style.color === 'red') {
+				RED = true;
+			}
+		}
+		ul.innerHTML = "";
+		for (let i = 0; i < listItems.length; i++) {
+			var li = document.createElement('li');
+      			li.textContent = listItems[i];
+			if (RED) {
+				li.style.color = 'red';
+			}
+			ul.appendChild(li);
+		}
+	}
+	refreshUL();
+	
+	function capify(){
+		listItems = userEntries.map((item) => item.toUpperCase());
+		refreshUL();
+
+	}
+	const myButton = document.getElementById("swap");
+	myButton.addEventListener("click", swapify);
+	function swapify(){
+		listItems = userEntries.map((item) => item.charAt(item.length - 1) + item.substring(1, item.length - 1) + item.charAt(0))
+		refreshUL();
+
 	}
 	
-	let btn = document.getElementById("btn");
-	let box = document.getElementById("box");
-	let colorRed = 255;    // initialize the red channel to pure red
-
-
-	btn.addEventListener("click", clickHandler, false);
-		
-	function clickHandler() {
-		// first color channel (red) gets darker every time button is clicked
-		box.style.backgroundColor = "rgb(" + (colorRed-=10) + ", 0, 0)";
-
-		// ES6 equivalent using template string
-		//box.style.backgroundColor = `rgb( ${colorRed-=10}, 0, 0 )`;	
-	}	
-		
 	</script>
 </body>
 </html>
