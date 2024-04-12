@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>DOM Color Tweaker</title>
+	<title>CS Homework 2</title>
 	<style>
 		body {
 			font-family:"Trebuchet MS", Segoe, sans-serif;
@@ -32,10 +32,20 @@
 	<input type= "text" id="box">
 	
 	<script>
-		
+	
+	let userEntries = []
+	for (let i = 0; i < 3; i++) {
+		let playerText = prompt('Please enter a word of your choice:');
+		userEntries[playerText]
+	}
+	for (let i = 0; i < userEntries.length; i++) {
+		let playerText = prompt(userEntries[i]);
+	}
+	
 	let btn = document.getElementById("btn");
 	let box = document.getElementById("box");
 	let colorRed = 255;    // initialize the red channel to pure red
+
 
 	btn.addEventListener("click", clickHandler, false);
 		
